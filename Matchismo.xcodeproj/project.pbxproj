@@ -47,7 +47,6 @@
 		6818C7B31CDACF8000DF1951 /* vg_mute_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 6818C7AC1CDACF8000DF1951 /* vg_mute_on.png */; };
 		6818C7B41CDACF8000DF1951 /* vg_privacy.png in Resources */ = {isa = PBXBuildFile; fileRef = 6818C7AD1CDACF8000DF1951 /* vg_privacy.png */; };
 		6818C7B51CDACF8000DF1951 /* VungleSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6818C7AE1CDACF8000DF1951 /* VungleSDK.framework */; };
-		6818C7BB1CDAD4D400DF1951 /* playADViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6818C7BA1CDAD4D400DF1951 /* playADViewController.m */; };
 		6836689119ACF0510009E3B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B76AB6B18258B8000B30B2C /* Images.xcassets */; };
 		68FB60DB19AD52D400090400 /* icon 29pt.png in Resources */ = {isa = PBXBuildFile; fileRef = 68FB60DA19AD52D400090400 /* icon 29pt.png */; };
 		68FB60DF19AD531600090400 /* icon 29pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 68FB60DC19AD531600090400 /* icon 29pt@2x.png */; };
@@ -116,8 +115,6 @@
 		6818C7AC1CDACF8000DF1951 /* vg_mute_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vg_mute_on.png; sourceTree = "<group>"; };
 		6818C7AD1CDACF8000DF1951 /* vg_privacy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vg_privacy.png; sourceTree = "<group>"; };
 		6818C7AE1CDACF8000DF1951 /* VungleSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VungleSDK.framework; sourceTree = "<group>"; };
-		6818C7B91CDAD4D400DF1951 /* playADViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = playADViewController.h; sourceTree = "<group>"; };
-		6818C7BA1CDAD4D400DF1951 /* playADViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = playADViewController.m; sourceTree = "<group>"; };
 		6836689219ACF4AA0009E3B2 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
 		6836689319ACF4C90009E3B2 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
 		6836689419ACF4E20009E3B2 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@2x.png"; path = "../Icon-60@2x.png"; sourceTree = "<group>"; };
@@ -216,8 +213,6 @@
 				5B76AB6518258B8000B30B2C /* Main.storyboard */,
 				5B76AB6818258B8000B30B2C /* CardGameViewController.h */,
 				5B76AB6918258B8000B30B2C /* CardGameViewController.m */,
-				6818C7B91CDAD4D400DF1951 /* playADViewController.h */,
-				6818C7BA1CDAD4D400DF1951 /* playADViewController.m */,
 				5B76AB8B1826553000B30B2C /* Model */,
 				5B76AB6B18258B8000B30B2C /* Images.xcassets */,
 				5B76AB5A18258B8000B30B2C /* Supporting Files */,
@@ -423,7 +418,6 @@
 				5BC4BC0A182669D100C71211 /* PlayingCardDeck.m in Sources */,
 				5B76AB6018258B8000B30B2C /* main.m in Sources */,
 				5B76AB8A1826551500B30B2C /* Card.m in Sources */,
-				6818C7BB1CDAD4D400DF1951 /* playADViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

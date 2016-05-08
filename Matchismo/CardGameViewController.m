@@ -28,13 +28,16 @@
 {
     [super viewDidLoad];
     
-    
     //Set VungleSDK Delegate
     [[VungleSDK sharedSDK] setDelegate:self];
-
-    
     
 }
+
+- (void)dealloc
+{
+    [[VungleSDK sharedSDK] setDelegate:nil];
+}
+
 
 - (CardMatchingGame *)game
 {
@@ -62,7 +65,7 @@
 
 - (IBAction)touchCardButton:(UIButton *)sender
 {
-    int cardIndex = [self.cardButtons indexOfObject:sender];
+    NSUInteger cardIndex = [self.cardButtons indexOfObject:sender];
     [self.game chooseCardAtIndex:cardIndex];
     [self updateUI];
 }
@@ -70,7 +73,7 @@
 - (void)updateUI
 {
     for (UIButton *cardButton in self.cardButtons) {
-        int cardIndex = [self.cardButtons indexOfObject:cardButton];
+        NSUInteger cardIndex = [self.cardButtons indexOfObject:cardButton];
         Card *card = [self.game cardAtIndex:cardIndex];
         [cardButton setTitle:[self titleForCard:card]
                     forState:UIControlStateNormal];
@@ -78,7 +81,7 @@
                               forState:UIControlStateNormal];
         cardButton.enabled = !card.matched;
     }
-    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", (int)self.game.score];
 }
 
 - (NSString *)titleForCard:(Card *)card
@@ -158,10 +161,10 @@
             NSLog(@"%@ : %@", key, [[viewInfo objectForKey:key] description]);
         }
     }
-    
+    // if completed watch a video give 20 points.
     if([viewInfo valueForKey:@"completedView"])
     {
-        NSLog(@"ad video completed");
+        NSLog(@"ad video completed. adding points to the score");
         [_game watchAD];
         [self updateUI];
     }
@@ -172,6 +175,7 @@
 - (void)vungleSDKwillCloseProductSheet:(id)productSheet {
     NSLog(@"The user has downloaded an advertised application and is now returning to the main app");
     //This method can be used to resume animations, sound, etc. if a user was presented a product sheet earlier
+    NSLog(@"ah yeah! we sold an app");
 }
 
 

@@ -99,7 +99,7 @@ static const int COST_TO_CHOOSE = 1;
 
 -(void) watchAD
 {
-    _score += 5;
+    _score += 20;
 }
 
 

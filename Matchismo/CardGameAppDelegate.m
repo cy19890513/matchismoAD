@@ -15,7 +15,7 @@
 {
     // Override point for customization after application launch.
     
-    NSString* appID = @"Test_iOS";
+    NSString* appID = @"572a3659e2848b4435000039";
     VungleSDK *sdk = [VungleSDK sharedSDK];
     
     // start vungle publisher library
