@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <VungleSDK/VungleSDK.h>
 
-@interface CardGameViewController : UIViewController
+@interface CardGameViewController : UIViewController<VungleSDKDelegate>
 
 @end
