@@ -201,6 +201,7 @@
                     </view>
                     <connections>
                         <outlet property="modeSelector" destination="JNd-k6-Zz3" id="K1u-V6-hle"/>
+                        <outlet property="playADButton" destination="fFO-91-pya" id="42x-BS-lw7"/>
                         <outlet property="scoreLabel" destination="0d6-Ws-Dtn" id="H0r-VK-DNE"/>
                         <outletCollection property="cardButtons" destination="4dR-0p-vGO" id="q7f-rU-LZf"/>
                         <outletCollection property="cardButtons" destination="IQG-6d-usu" id="1e3-Rd-l6Y"/>

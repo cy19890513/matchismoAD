@@ -97,4 +97,10 @@ static const int COST_TO_CHOOSE = 1;
     return (index < [self.cards count]) ? self.cards[index] : nil;
 }
 
+-(void) watchAD
+{
+    _score += 5;
+}
+
+
 @end

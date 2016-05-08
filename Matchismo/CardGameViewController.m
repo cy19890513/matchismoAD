@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSelector;
+@property (strong, nonatomic) IBOutlet UIButton *playADButton;
 
 @end
 
@@ -94,6 +95,7 @@
     
     VungleSDK* sdk = [VungleSDK sharedSDK];
     NSError *error;
+    [sdk setLoggingEnabled:YES];
     [sdk playAd:self error:&error];
     if (error) {
         NSLog(@"Error encountered playing ad: %@", error);
@@ -104,20 +106,37 @@
 #pragma mark - VungleSDK Delegate
 
 - (void)vungleSDKAdPlayableChanged:(BOOL)isAdPlayable {
+    
+    VungleSDK* sdk = [VungleSDK sharedSDK];
     if (isAdPlayable) {
         NSLog(@"An ad is available for playback");
-        //        if (!_showAdButton.enabled || !_showAdWithOptionsButton.enabled) {
-        //            [self enableAdButtons:YES];
-        //        }
+        self.playADButton.enabled = YES;
     } else {
         NSLog(@"No ads currently available for playback");
-        //        [self enableAdButtons:NO];
+        self.playADButton.enabled = NO;
+        
     }
+    // check if it is muted
+    if([sdk muted])
+        NSLog(@"vungle ad is muted");
+    else
+        NSLog(@"vungle ad is not muted");
+    //print user DATA
+    if([sdk userData]!=nil && [[sdk userData]count]!=0)
+    {
+    	for(NSString * key in [[sdk userData] allKeys]) {
+      	  NSLog(@"%@ : %@", key, [[[sdk userData] objectForKey:key] description]);
+    	}
+    }
+    else
+        NSLog(@"userdata is nil for now.");
+    
 }
 
 - (void)vungleSDKwillShowAd {
+    
     NSLog(@"An ad is about to be played!");
-    //Use this delegate method to pause animations, sound, etc.
+    NSLog(@"turn off sound and pause your game");
 }
 
 - (void) vungleSDKwillCloseAdWithViewInfo:(NSDictionary *)viewInfo willPresentProductSheet:(BOOL)willPresentProductSheet {
@@ -128,6 +147,8 @@
         for(NSString * key in [viewInfo allKeys]) {
             NSLog(@"%@ : %@", key, [[viewInfo objectForKey:key] description]);
         }
+        
+        
     } else {
         //In this case the user has declined to download the advertised application and is now returning fully to the main app
         //Animations / Sound / Gameplay can be resumed now
@@ -137,6 +158,15 @@
             NSLog(@"%@ : %@", key, [[viewInfo objectForKey:key] description]);
         }
     }
+    
+    if([viewInfo valueForKey:@"completedView"])
+    {
+        NSLog(@"ad video completed");
+        [_game watchAD];
+        [self updateUI];
+    }
+    
+    
 }
 
 - (void)vungleSDKwillCloseProductSheet:(id)productSheet {

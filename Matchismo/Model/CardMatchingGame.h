@@ -17,6 +17,7 @@
 
 - (void)chooseCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
+-(void) watchAD;
 
 @property (nonatomic, readonly) NSInteger score;
 @property (nonatomic) NSUInteger maxMatchingCards;
