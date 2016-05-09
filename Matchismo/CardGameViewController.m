@@ -115,7 +115,15 @@
     	VungleSDK* sdk = [VungleSDK sharedSDK];
     	NSError *error;
     	[sdk setLoggingEnabled:YES];
-    	[sdk playAd:self error:&error];
+        
+        // Dict to set custom ad options
+        NSDictionary* options = @{VunglePlayAdOptionKeyUser: @"user",
+                                  VunglePlayAdOptionKeyPlacement: @"StoreFront",
+                                  // Use this to keep track of metrics about your users
+                                  VunglePlayAdOptionKeyExtraInfoDictionary: @{VunglePlayAdOptionKeyExtra1: @"26",
+                                                                              VunglePlayAdOptionKeyExtra2: @"Male"}};
+   
+    	[sdk playAd:self withOptions:options error:&error];
     	if (error) {
       	  NSLog(@"Error encountered playing ad: %@", error);
     	}

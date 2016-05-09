@@ -23,13 +23,13 @@ extern NSString* VunglePlayAdOptionKeyUser;
 extern NSString* VunglePlayAdOptionKeyPlacement;
 extern NSString* VunglePlayAdOptionKeyExtraInfoDictionary;
 extern NSString* VunglePlayAdOptionKeyExtra1;
-extern NSString* VunglePlayAdOptionKeyExtra2;
 extern NSString* VunglePlayAdOptionKeyExtra3;
 extern NSString* VunglePlayAdOptionKeyExtra4;
 extern NSString* VunglePlayAdOptionKeyExtra5;
 extern NSString* VunglePlayAdOptionKeyExtra6;
 extern NSString* VunglePlayAdOptionKeyExtra7;
-extern NSString* VunglePlayAdOptionKeyExtra8;
+extern NSString* VunglePlayAdOptionKeyExtra8;extern NSString* VunglePlayAdOptionKeyExtra2;
+
 extern NSString* VunglePlayAdOptionKeyLargeButtons;
 
 typedef enum {
