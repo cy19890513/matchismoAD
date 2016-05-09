@@ -94,14 +94,39 @@
     return [UIImage imageNamed:card.chosen ? @"cardfront" : @"cardback"];
 }
 
+-(void) addPointsAlert: (int) point
+{
+    NSString *title =[NSString stringWithFormat:@"%d points added", point];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:@"You have succesfully watched an add. Points have added for you."
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+
+    
+}
+
 - (IBAction)playAD:(id)sender {
     
-    VungleSDK* sdk = [VungleSDK sharedSDK];
-    NSError *error;
-    [sdk setLoggingEnabled:YES];
-    [sdk playAd:self error:&error];
-    if (error) {
-        NSLog(@"Error encountered playing ad: %@", error);
+    //if not watch prepare sdk and play ad, otherwise add points.
+    if(self.game.ifplayAD == NO)
+    {
+    	VungleSDK* sdk = [VungleSDK sharedSDK];
+    	NSError *error;
+    	[sdk setLoggingEnabled:YES];
+    	[sdk playAd:self error:&error];
+    	if (error) {
+      	  NSLog(@"Error encountered playing ad: %@", error);
+    	}
+    }
+    else
+    {
+        [self.game addPointsForAD];
+        [self updateUI];
+        [self addPointsAlert:20];
+        self.game.ifplayAD = NO;
+        
     }
 
 }
@@ -119,11 +144,13 @@
         self.playADButton.enabled = NO;
         
     }
+    
     // check if it is muted
     if([sdk muted])
         NSLog(@"vungle ad is muted");
     else
         NSLog(@"vungle ad is not muted");
+    
     //print user DATA
     if([sdk userData]!=nil && [[sdk userData]count]!=0)
     {
@@ -161,12 +188,12 @@
             NSLog(@"%@ : %@", key, [[viewInfo objectForKey:key] description]);
         }
     }
+    
     // if completed watch a video give 20 points.
     if([viewInfo valueForKey:@"completedView"])
     {
         NSLog(@"ad video completed. adding points to the score");
-        [_game watchAD];
-        [self updateUI];
+        self.game.ifplayAD = YES;
     }
     
     

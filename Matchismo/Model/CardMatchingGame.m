@@ -13,6 +13,7 @@
 @property (nonatomic, readwrite) NSInteger score;
 @property (nonatomic, strong) NSMutableArray *cards; // of Card
 
+
 @end
 
 @implementation CardMatchingGame
@@ -36,6 +37,7 @@
                         usingDeck:(Deck *)deck
 {
     self = [super init];
+    _ifplayAD = NO;
     
     if (self) {
         for (int i = 0; i < count; i++) {
@@ -97,7 +99,7 @@ static const int COST_TO_CHOOSE = 1;
     return (index < [self.cards count]) ? self.cards[index] : nil;
 }
 
--(void) watchAD
+-(void) addPointsForAD
 {
     _score += 20;
 }
